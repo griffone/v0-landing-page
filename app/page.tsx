@@ -1,28 +1,38 @@
+"use client"
+
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { MessageSquare, Database, BarChart3, Layout, Zap, Shield } from "lucide-react"
+import { MessageSquare, Database, BarChart3, Layout, Zap, Shield, X } from "lucide-react"
+import { useState } from "react"
 
 export default function HomePage() {
+  const [zoomedImage, setZoomedImage] = useState<string | null>(null)
+
+  const openImageZoom = (imageSrc: string) => {
+    setZoomedImage(imageSrc)
+  }
+
+  const closeImageZoom = () => {
+    setZoomedImage(null)
+  }
+
   return (
     <div className="min-h-screen bg-background">
       {/* Navigation */}
       <nav className="border-b border-border backdrop-blur-sm bg-background/80 sticky top-0 z-50">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            {/* PLACEHOLDER: Logo will go here */}
-            <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-xl">CD</span>
-            </div>
+            <img src="/assets/logo_svg.svg" alt="Chief Dashboard Logo" className="w-10 h-10" />
             <span className="text-xl font-bold text-foreground">Chief Dashboard</span>
           </div>
           <div className="flex items-center gap-4">
-            <Button variant="ghost" className="text-foreground hover:text-primary">
+            <Button variant="ghost" className="text-foreground hover:text-primary hover:bg-transparent">
               Características
             </Button>
-            <Button variant="ghost" className="text-foreground hover:text-primary">
+            <Button variant="ghost" className="text-foreground hover:text-primary hover:bg-transparent">
               Precios
             </Button>
-            <Button variant="ghost" className="text-foreground hover:text-primary">
+            <Button variant="ghost" className="text-foreground hover:text-primary hover:bg-transparent">
               Contacto
             </Button>
             <Button className="bg-primary text-primary-foreground hover:bg-primary/90">Comenzar</Button>
@@ -76,7 +86,7 @@ export default function HomePage() {
               <Button
                 size="lg"
                 variant="outline"
-                className="text-foreground border-border hover:bg-card text-lg px-8 bg-transparent backdrop-blur-sm"
+                className="text-foreground border-border hover:bg-card text-lg px-8 bg-transparent backdrop-blur-sm hover:text-primary"
               >
                 Ver demo
               </Button>
@@ -201,11 +211,14 @@ export default function HomePage() {
               <p className="text-muted-foreground leading-relaxed">
                 Vincula tu base de datos Postgres de forma segura con nuestro sistema MCP.
               </p>
-              {/* PLACEHOLDER: Screenshot of connection setup */}
+              {/* Screenshot of connection setup */}
               <div className="mt-6 bg-card border border-border rounded-lg p-4">
-                <div className="bg-secondary rounded aspect-video flex items-center justify-center">
-                  <p className="text-muted-foreground text-sm text-center px-4">[Captura: Panel de conexión]</p>
-                </div>
+                <img 
+                  src="/assets/photo_example_1.png" 
+                  alt="Panel de conexión a base de datos" 
+                  className="w-full rounded aspect-video object-cover cursor-pointer hover:opacity-80 transition-opacity"
+                  onClick={() => openImageZoom("/assets/photo_example_1_zoomed.png")}
+                />
               </div>
             </div>
 
@@ -217,11 +230,14 @@ export default function HomePage() {
               <p className="text-muted-foreground leading-relaxed">
                 Haz preguntas sobre tus datos como si hablaras con un analista experto.
               </p>
-              {/* PLACEHOLDER: Screenshot of chat interface */}
+              {/* Screenshot of chat interface */}
               <div className="mt-6 bg-card border border-border rounded-lg p-4">
-                <div className="bg-secondary rounded aspect-video flex items-center justify-center">
-                  <p className="text-muted-foreground text-sm text-center px-4">[Captura: Interfaz de chat]</p>
-                </div>
+                <img 
+                  src="/assets/photo_example_2.png" 
+                  alt="Interfaz de chat con consulta en lenguaje natural" 
+                  className="w-full rounded aspect-video object-cover cursor-pointer hover:opacity-80 transition-opacity"
+                  onClick={() => openImageZoom("/assets/photo_example_2_zoomed.png")}
+                />
               </div>
             </div>
 
@@ -233,11 +249,14 @@ export default function HomePage() {
               <p className="text-muted-foreground leading-relaxed">
                 Agrupa tus gráficos y tablas en dashboards personalizados y arrastrables.
               </p>
-              {/* PLACEHOLDER: Screenshot of dashboard builder */}
+              {/* Screenshot of dashboard builder */}
               <div className="mt-6 bg-card border border-border rounded-lg p-4">
-                <div className="bg-secondary rounded aspect-video flex items-center justify-center">
-                  <p className="text-muted-foreground text-sm text-center px-4">[Captura: Constructor de dashboard]</p>
-                </div>
+                <img 
+                  src="/assets/photo_example_3.png" 
+                  alt="Constructor de dashboard personalizable" 
+                  className="w-full rounded aspect-video object-cover cursor-pointer hover:opacity-80 transition-opacity"
+                  onClick={() => openImageZoom("/assets/photo_example_3.png")}
+                />
               </div>
             </div>
           </div>
@@ -254,7 +273,7 @@ export default function HomePage() {
 
           <div className="space-y-6">
             <Card className="bg-card border-border">
-              <CardContent className="pt-6">
+              <CardContent className="pt-2">
                 <h3 className="text-xl font-bold text-foreground mb-2">📊 Análisis de Ventas</h3>
                 <p className="text-muted-foreground leading-relaxed">
                   "¿Cuáles fueron nuestras ventas totales el mes pasado?" - Obtén respuestas inmediatas con
@@ -264,7 +283,7 @@ export default function HomePage() {
             </Card>
 
             <Card className="bg-card border-border">
-              <CardContent className="pt-6">
+              <CardContent className="pt-2">
                 <h3 className="text-xl font-bold text-foreground mb-2">👥 Métricas de Usuario</h3>
                 <p className="text-muted-foreground leading-relaxed">
                   "Muéstrame los usuarios activos por región en los últimos 6 meses" - Consultas complejas en lenguaje
@@ -274,7 +293,7 @@ export default function HomePage() {
             </Card>
 
             <Card className="bg-card border-border">
-              <CardContent className="pt-6">
+              <CardContent className="pt-2">
                 <h3 className="text-xl font-bold text-foreground mb-2">💰 Reportes Financieros</h3>
                 <p className="text-muted-foreground leading-relaxed">
                   "Compara los ingresos trimestrales de este año con el anterior" - Genera reportes ejecutivos al
@@ -405,6 +424,29 @@ export default function HomePage() {
           </div>
         </div>
       </footer>
+
+      {/* Image Zoom Modal */}
+      {zoomedImage && (
+        <div 
+          className="fixed inset-0 bg-black/80 backdrop-blur-sm z-[100] flex items-center justify-center p-4"
+          onClick={closeImageZoom}
+        >
+          <div className="relative max-w-7xl max-h-[90vh] w-full h-full flex items-center justify-center">
+            <button
+              onClick={closeImageZoom}
+              className="absolute top-4 right-4 z-10 bg-black/50 hover:bg-black/70 text-white rounded-full p-2 transition-colors"
+            >
+              <X className="w-6 h-6" />
+            </button>
+            <img 
+              src={zoomedImage} 
+              alt="Imagen ampliada" 
+              className="max-w-full max-h-full object-contain rounded-lg shadow-2xl"
+              onClick={(e) => e.stopPropagation()}
+            />
+          </div>
+        </div>
+      )}
     </div>
   )
 }
