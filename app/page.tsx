@@ -93,14 +93,14 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* PLACEHOLDER: Hero screenshot/mockup will go here */}
+          {/* Hero screenshot/mockup */}
           <div className="mt-16 max-w-6xl mx-auto">
             <div className="bg-card/50 backdrop-blur-xl border border-border/50 rounded-2xl p-4 shadow-2xl shadow-primary/5">
-              <div className="bg-secondary/50 backdrop-blur-sm rounded-xl aspect-video flex items-center justify-center">
-                <p className="text-muted-foreground text-center px-4">
-                  [Captura de pantalla: Interfaz de chat con consulta en lenguaje natural y visualización de datos]
-                </p>
-              </div>
+              <img 
+                src="/assets/laptop_mockup.png" 
+                alt="Mockup de Chief Dashboard en laptop mostrando interfaz de chat con consulta en lenguaje natural y visualización de datos" 
+                className="w-full rounded-xl object-cover"
+              />
             </div>
           </div>
         </div>
