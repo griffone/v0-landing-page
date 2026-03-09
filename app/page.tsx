@@ -26,16 +26,24 @@ export default function HomePage() {
             <span className="text-xl font-bold text-foreground">Chief Dashboard</span>
           </div>
           <div className="flex items-center gap-4">
-            <Button variant="ghost" className="text-foreground hover:text-primary hover:bg-transparent">
-              Características
-            </Button>
-            <Button variant="ghost" className="text-foreground hover:text-primary hover:bg-transparent">
-              Precios
-            </Button>
-            <Button variant="ghost" className="text-foreground hover:text-primary hover:bg-transparent">
-              Contacto
-            </Button>
-            <Button className="bg-primary text-primary-foreground hover:bg-primary/90">Comenzar</Button>
+            <a href="#caracteristicas">
+              <Button variant="ghost" className="text-foreground hover:text-primary hover:bg-transparent">
+                Características
+              </Button>
+            </a>
+            <a href="#como-funciona">
+              <Button variant="ghost" className="text-foreground hover:text-primary hover:bg-transparent">
+                Cómo Funciona
+              </Button>
+            </a>
+            <a href="#casos-de-uso">
+              <Button variant="ghost" className="text-foreground hover:text-primary hover:bg-transparent">
+                Casos de Uso
+              </Button>
+            </a>
+            <a href="https://chiefdashboard.online/" target="_blank" rel="noopener noreferrer">
+              <Button className="bg-primary text-primary-foreground hover:bg-primary/90">Comenzar</Button>
+            </a>
           </div>
         </div>
       </nav>
@@ -77,19 +85,14 @@ export default function HomePage() {
               conversando.
             </p>
             <div className="flex items-center justify-center gap-4 flex-wrap">
-              <Button
-                size="lg"
-                className="bg-primary text-primary-foreground hover:bg-primary/90 text-lg px-8 shadow-lg shadow-primary/20"
-              >
-                Probar gratis
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="text-foreground border-border hover:bg-card text-lg px-8 bg-transparent backdrop-blur-sm hover:text-primary"
-              >
-                Ver demo
-              </Button>
+              <a href="https://chiefdashboard.online/" target="_blank" rel="noopener noreferrer">
+                <Button
+                  size="lg"
+                  className="bg-primary text-primary-foreground hover:bg-primary/90 text-lg px-8 shadow-lg shadow-primary/20"
+                >
+                  Probar gratis
+                </Button>
+              </a>
             </div>
           </div>
 
@@ -107,7 +110,7 @@ export default function HomePage() {
       </section>
 
       {/* Features Section */}
-      <section className="container mx-auto px-4 py-20">
+      <section id="caracteristicas" className="container mx-auto px-4 py-20">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-4xl font-bold text-center text-foreground mb-4">
             Todo lo que necesitas para analizar datos
@@ -195,7 +198,7 @@ export default function HomePage() {
       </section>
 
       {/* How it Works */}
-      <section className="container mx-auto px-4 py-20">
+      <section id="como-funciona" className="container mx-auto px-4 py-20">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-4xl font-bold text-center text-foreground mb-4">Cómo funciona</h2>
           <p className="text-center text-muted-foreground mb-16 text-lg">
@@ -264,7 +267,7 @@ export default function HomePage() {
       </section>
 
       {/* Use Cases */}
-      <section className="container mx-auto px-4 py-20">
+      <section id="casos-de-uso" className="container mx-auto px-4 py-20">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-4xl font-bold text-center text-foreground mb-4">Casos de uso</h2>
           <p className="text-center text-muted-foreground mb-16 text-lg">
@@ -315,16 +318,11 @@ export default function HomePage() {
             Sin necesidad de SQL. Sin complicaciones técnicas. Solo conversaciones naturales con tus datos.
           </p>
           <div className="flex items-center justify-center gap-4">
-            <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 text-lg px-8">
-              Empezar gratis
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="text-foreground border-border hover:bg-secondary text-lg px-8 bg-transparent"
-            >
-              Agendar demo
-            </Button>
+            <a href="https://chiefdashboard.online/" target="_blank" rel="noopener noreferrer">
+              <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 text-lg px-8">
+                Empezar gratis
+              </Button>
+            </a>
           </div>
         </div>
       </section>
