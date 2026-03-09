@@ -2,11 +2,12 @@
 
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { MessageSquare, Database, BarChart3, Layout, Zap, Shield, X } from "lucide-react"
+import { MessageSquare, Database, BarChart3, Layout, Zap, Shield, X, Menu } from "lucide-react"
 import { useState } from "react"
 
 export default function HomePage() {
   const [zoomedImage, setZoomedImage] = useState<string | null>(null)
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   const openImageZoom = (imageSrc: string) => {
     setZoomedImage(imageSrc)
@@ -14,6 +15,14 @@ export default function HomePage() {
 
   const closeImageZoom = () => {
     setZoomedImage(null)
+  }
+
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen(!mobileMenuOpen)
+  }
+
+  const closeMobileMenu = () => {
+    setMobileMenuOpen(false)
   }
 
   return (
@@ -25,7 +34,9 @@ export default function HomePage() {
             <img src="/assets/logo_svg.svg" alt="Chief Dashboard Logo" className="w-10 h-10" />
             <span className="text-xl font-bold text-foreground">Chief Dashboard</span>
           </div>
-          <div className="flex items-center gap-4">
+          
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex items-center gap-4">
             <a href="#caracteristicas">
               <Button variant="ghost" className="text-foreground hover:text-primary hover:bg-transparent">
                 Características
@@ -43,6 +54,43 @@ export default function HomePage() {
             </a>
             <a href="https://chiefdashboard.online/" target="_blank" rel="noopener noreferrer">
               <Button className="bg-primary text-primary-foreground hover:bg-primary/90">Comenzar</Button>
+            </a>
+          </div>
+
+          {/* Mobile Menu Button */}
+          <button
+            className="md:hidden p-2 text-foreground hover:text-primary transition-colors"
+            onClick={toggleMobileMenu}
+            aria-label="Toggle menu"
+          >
+            {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
+        </div>
+
+        {/* Mobile Navigation Menu */}
+        <div
+          className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
+            mobileMenuOpen ? "max-h-80 opacity-100" : "max-h-0 opacity-0"
+          }`}
+        >
+          <div className="container mx-auto px-4 pb-4 flex flex-col gap-2">
+            <a href="#caracteristicas" onClick={closeMobileMenu}>
+              <Button variant="ghost" className="w-full justify-start text-foreground hover:text-primary hover:bg-primary/10">
+                Características
+              </Button>
+            </a>
+            <a href="#como-funciona" onClick={closeMobileMenu}>
+              <Button variant="ghost" className="w-full justify-start text-foreground hover:text-primary hover:bg-primary/10">
+                Cómo Funciona
+              </Button>
+            </a>
+            <a href="#casos-de-uso" onClick={closeMobileMenu}>
+              <Button variant="ghost" className="w-full justify-start text-foreground hover:text-primary hover:bg-primary/10">
+                Casos de Uso
+              </Button>
+            </a>
+            <a href="https://chiefdashboard.online/" target="_blank" rel="noopener noreferrer" onClick={closeMobileMenu}>
+              <Button className="w-full bg-primary text-primary-foreground hover:bg-primary/90">Comenzar</Button>
             </a>
           </div>
         </div>
